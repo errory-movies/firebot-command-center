@@ -1,17 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Flame, Gauge, Droplet } from "lucide-react";
+import { Flame, Droplet } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface StatusPanelProps {
   flameDetected: boolean;
-  distance: number;
   pumpStatus: boolean;
 }
 
 export function StatusPanel({
   flameDetected,
-  distance,
   pumpStatus,
 }: StatusPanelProps) {
   return (
@@ -52,33 +50,6 @@ export function StatusPanel({
           >
             {flameDetected ? "Fire Detected" : "Safe"}
           </Badge>
-        </div>
-
-        {/* Distance Sensor */}
-        <div className="flex items-center justify-between p-4 rounded-lg bg-card border">
-          <div className="flex items-center gap-3">
-            <div
-              className={cn(
-                "flex items-center justify-center w-10 h-10 rounded-full",
-                distance < 20 ? "bg-warning/10" : "bg-primary/10"
-              )}
-            >
-              <Gauge
-                className={cn(
-                  "h-5 w-5",
-                  distance < 20 ? "text-warning" : "text-primary"
-                )}
-              />
-            </div>
-            <div>
-              <p className="text-sm font-medium">Distance</p>
-              <p className="text-xs text-muted-foreground">Obstacle sensor</p>
-            </div>
-          </div>
-          <div className="text-right">
-            <p className="text-2xl font-bold">{distance}</p>
-            <p className="text-xs text-muted-foreground">cm</p>
-          </div>
         </div>
 
         {/* Pump Status */}

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
-import { Bluetooth, BluetoothConnected, Bot } from "lucide-react";
+import { Bluetooth, BluetoothConnected } from "lucide-react";
 
 interface HeaderProps {
   isConnected: boolean;
@@ -19,18 +19,13 @@ export function Header({
     <header className="border-b bg-card">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10">
-              <Bot className="h-6 w-6 text-primary" />
-            </div>
-            <div>
-              <h1 className="text-xl font-semibold tracking-tight">
-                Robot Control Center
-              </h1>
-              <p className="text-sm text-muted-foreground">
-                {isConnected ? `Connected to ${deviceName}` : "Not connected"}
-              </p>
-            </div>
+          <div>
+            <h1 className="text-xl font-semibold tracking-tight">
+              Robot Control Center
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              {isConnected ? `Connected to ${deviceName}` : "Not connected"}
+            </p>
           </div>
 
           <div className="flex items-center gap-3">

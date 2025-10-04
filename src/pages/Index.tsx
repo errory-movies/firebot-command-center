@@ -11,7 +11,6 @@ const Index = () => {
   const [pumpActive, setPumpActive] = useState(false);
   const [sensorData, setSensorData] = useState<SensorData>({
     flameDetected: false,
-    distance: 50,
     pumpStatus: false,
   });
 
@@ -21,7 +20,6 @@ const Index = () => {
       const interval = setInterval(() => {
         setSensorData({
           flameDetected: Math.random() > 0.8,
-          distance: Math.floor(Math.random() * 100) + 10,
           pumpStatus: pumpActive,
         });
       }, 2000);
@@ -147,7 +145,6 @@ const Index = () => {
 
           <StatusPanel
             flameDetected={sensorData.flameDetected}
-            distance={sensorData.distance}
             pumpStatus={sensorData.pumpStatus}
           />
         </div>

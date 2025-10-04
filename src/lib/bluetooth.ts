@@ -6,7 +6,6 @@ export const SENSOR_CHAR_UUID = "beb5483d-36e1-4688-b7f5-ea07361b26a8";
 
 export interface SensorData {
   flameDetected: boolean;
-  distance: number;
   pumpStatus: boolean;
 }
 
@@ -66,14 +65,12 @@ class BluetoothManager {
     if (!value || !this.sensorCallback) return;
 
     // Parse sensor data (adjust based on your ESP32 data format)
-    // Expected format: [flameDetected(0/1), distance(2 bytes), pumpStatus(0/1)]
+    // Expected format: [flameDetected(0/1), pumpStatus(0/1)]
     const flameDetected = value.getUint8(0) === 1;
-    const distance = value.getUint16(1, true); // little-endian
-    const pumpStatus = value.getUint8(3) === 1;
+    const pumpStatus = value.getUint8(1) === 1;
 
     this.sensorCallback({
       flameDetected,
-      distance,
       pumpStatus,
     });
   }
